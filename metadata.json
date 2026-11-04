@@ -1,0 +1,6 @@
+{
+  "name": "Secret Code Gift",
+  "description": "A romantic, handmade pastel sticker-style interactive gift experience with a secret passcode, tulip notes, vinyl music player, and heartfelt letter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

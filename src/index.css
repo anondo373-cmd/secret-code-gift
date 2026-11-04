@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-blush: #FDEBF1;
+    --color-deeper-pink: #F8C8D8;
+    --color-raspberry: #D6336C;
+    --color-cream: #FFF3DC;
+    --color-soft-blue: #A9D6F0;
+    --color-ink-brown: #5A2A2A;
+    --color-vinyl-black: #111111;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #FDEBF1;
+    color: #5A2A2A;
+    font-family: 'Fredoka', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+.font-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-fredoka {
+  font-family: 'Fredoka', sans-serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-patrick {
+  font-family: 'Patrick Hand', cursive;
+}
+
+/* Soft watercolor-style pink cloud gradient (layered blurred radial gradients + subtle SVG noise) */
+.bg-watercolor-clouds {
+  background-color: #FDEBF1;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(248, 200, 216, 0.85) 0%, rgba(248, 200, 216, 0) 48%),
+    radial-gradient(circle at 82% 28%, rgba(255, 243, 220, 0.9) 0%, rgba(255, 243, 220, 0) 45%),
+    radial-gradient(circle at 50% 65%, rgba(248, 200, 216, 0.75) 0%, rgba(248, 200, 216, 0) 55%),
+    radial-gradient(circle at 15% 82%, rgba(255, 243, 220, 0.8) 0%, rgba(255, 243, 220, 0) 42%),
+    radial-gradient(circle at 85% 80%, rgba(214, 51, 108, 0.14) 0%, rgba(214, 51, 108, 0) 50%);
+}
+
+/* Pink watercolor stripes background for Gift 2 (Playlist) */
+.bg-watercolor-stripes {
+  background-color: #FDEBF1;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(248, 200, 216, 0.48) 0px,
+      rgba(248, 200, 216, 0.48) 38px,
+      rgba(253, 235, 241, 0.75) 38px,
+      rgba(253, 235, 241, 0.75) 76px,
+      rgba(255, 243, 220, 0.55) 76px,
+      rgba(255, 243, 220, 0.55) 114px
+    ),
+    radial-gradient(circle at 25% 30%, rgba(248, 200, 216, 0.7) 0%, transparent 55%),
+    radial-gradient(circle at 75% 70%, rgba(255, 243, 220, 0.8) 0%, transparent 55%);
+}
+
+/* Lined notebook paper for Gift 3 (Letter) */
+.bg-notebook-paper {
+  background-color: #FFF3DC;
+  background-image:
+    linear-gradient(90deg, transparent 42px, rgba(214, 51, 108, 0.28) 42px, rgba(214, 51, 108, 0.28) 44px, transparent 44px),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 31px,
+      rgba(169, 214, 240, 0.55) 31px,
+      rgba(169, 214, 240, 0.55) 32px
+    );
+}
+
+@keyframes vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vinyl-record-spin {
+  animation: vinyl-spin 9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vinyl-record-spin {
+    animation-duration: 36s;
+  }
+}
