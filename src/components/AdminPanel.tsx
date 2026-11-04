@@ -318,48 +318,75 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
     }
   };
 
-  const handleSaveConfig = async () => {
-    setIsSaving(true);
-    setSaveFeedback(null);
-
-    try {
-      const resp = await fetch('/api/admin/config', {
-        method: 'POST',
-        credentials: 'include',
-        headers: getAdminHeaders({ 'Content-Type': 'application/json' }),
-        body: JSON.stringify({
-          config: draft,
-          assetsToDelete,
-        }),
-      });
-      const data = await resp.json().catch(() => ({}));
-      if (!resp.ok || !data.ok) {
-        setSaveFeedback({
-          type: 'error',
-          text: data.error || 'Failed to save configuration.',
-        });
-      } else {
-        setAppConfig(draft);
-        setAssetsToDelete([]);
-        await refreshConfig();
-        setSaveFeedback({
-          type: 'success',
-          text: 'All changes saved to database!',
-        });
-        setTimeout(() => setSaveFeedback(null), 4000);
+  const persistDraftToServer = useCallback(
+    async (cfgToSave: AppConfig, showToast = false) => {
+      if (showToast) {
+        setIsSaving(true);
+        setSaveFeedback(null);
       }
-    } catch (err) {
-      setSaveFeedback({
-        type: 'error',
-        text: err instanceof Error ? err.message : 'Network error while saving.',
-      });
-    } finally {
-      setIsSaving(false);
-    }
+      try {
+        const resp = await fetch('/api/admin/config', {
+          method: 'POST',
+          credentials: 'include',
+          headers: getAdminHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify({
+            config: cfgToSave,
+            assetsToDelete,
+          }),
+        });
+        const data = await resp.json().catch(() => ({}));
+        if (!resp.ok || !data.ok) {
+          if (showToast) {
+            setSaveFeedback({
+              type: 'error',
+              text: data.error || 'Failed to save configuration.',
+            });
+          }
+        } else {
+          setAppConfig(cfgToSave);
+          setAssetsToDelete([]);
+          if (showToast) {
+            await refreshConfig();
+            setSaveFeedback({
+              type: 'success',
+              text: 'All changes saved & synced for deployment!',
+            });
+            setTimeout(() => setSaveFeedback(null), 4000);
+          }
+        }
+      } catch (err) {
+        if (showToast) {
+          setSaveFeedback({
+            type: 'error',
+            text: err instanceof Error ? err.message : 'Network error while saving.',
+          });
+        }
+      } finally {
+        if (showToast) {
+          setIsSaving(false);
+        }
+      }
+    },
+    [assetsToDelete, refreshConfig, setAppConfig]
+  );
+
+  // Auto-save draft changes to server (src/savedConfig.json + DB) after 800ms
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    if (JSON.stringify(draft) === JSON.stringify(appConfig)) return;
+    const timer = setTimeout(() => {
+      persistDraftToServer(draft, false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [appConfig, draft, isAuthenticated, persistDraftToServer]);
+
+  const handleSaveConfig = async () => {
+    await persistDraftToServer(draft, true);
   };
 
-  const handlePreviewWithDraft = (target: PreviewTargetScreen) => {
+  const handlePreviewWithDraft = async (target: PreviewTargetScreen) => {
     setAppConfig(draft);
+    await persistDraftToServer(draft, false);
     onPreviewScreen?.(target);
   };
 

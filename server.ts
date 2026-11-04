@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express, { Request, Response, NextFunction } from 'express';
 import crypto from 'crypto';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createClient, Client } from '@libsql/client';
@@ -8,6 +9,32 @@ import { createServer as createViteServer } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const SAVED_CONFIG_FILE = path.join(__dirname, 'src', 'savedConfig.json');
+
+function readSavedConfigFile(): Record<string, any> | null {
+  try {
+    if (fs.existsSync(SAVED_CONFIG_FILE)) {
+      const raw = fs.readFileSync(SAVED_CONFIG_FILE, 'utf-8').trim();
+      if (raw && raw !== '{}') {
+        const parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+          return parsed;
+        }
+      }
+    }
+  } catch {
+    // ignore
+  }
+  return null;
+}
+
+function writeSavedConfigFile(cfg: Record<string, any>) {
+  try {
+    fs.writeFileSync(SAVED_CONFIG_FILE, JSON.stringify(cfg, null, 2), 'utf-8');
+  } catch (err) {
+    console.error('Failed to write src/savedConfig.json:', err);
+  }
+}
 
 const PORT = 3000;
 const SESSION_COOKIE_NAME = 'admin_session';
@@ -259,24 +286,57 @@ async function startServer() {
     });
   });
 
-  // 2. GET /api/config - Fetch saved gift config from DB
+  // 2. GET /api/config - Fetch saved gift config from DB or src/savedConfig.json
   app.get('/api/config', async (_req: Request, res: Response) => {
     try {
       const { client } = await getDb();
       const result = await client.execute(
         'SELECT data, updated_at FROM gift_config WHERE id = 1'
       );
-      if (result.rows.length === 0) {
-        res.json({ config: null });
+      if (result.rows.length > 0) {
+        const rawData = result.rows[0].data as string;
+        const parsed = JSON.parse(rawData);
+        // Ensure src/savedConfig.json stays synced with DB
+        if (!readSavedConfigFile()) {
+          writeSavedConfigFile(parsed);
+        }
+        res.json({
+          config: parsed,
+          updatedAt: result.rows[0].updated_at,
+        });
         return;
       }
-      const rawData = result.rows[0].data as string;
-      res.json({
-        config: JSON.parse(rawData),
-        updatedAt: result.rows[0].updated_at,
-      });
+      const fileConfig = readSavedConfigFile();
+      res.json({ config: fileConfig });
     } catch {
-      res.json({ config: null });
+      res.json({ config: readSavedConfigFile() });
+    }
+  });
+
+  // 2b. POST /api/sync-config - Syncs browser-cached config into DB & src/savedConfig.json if DB was empty
+  app.post('/api/sync-config', async (req: Request, res: Response) => {
+    try {
+      const { config: clientConfig } = req.body || {};
+      if (!clientConfig || typeof clientConfig !== 'object') {
+        res.status(400).json({ error: 'Invalid config' });
+        return;
+      }
+      const { client } = await getDb();
+      const existing = await client.execute('SELECT data FROM gift_config WHERE id = 1');
+      if (existing.rows.length === 0 && !readSavedConfigFile()) {
+        const now = Date.now();
+        await client.execute({
+          sql: `INSERT INTO gift_config (id, data, updated_at) VALUES (1, ?, ?)
+                ON CONFLICT(id) DO UPDATE SET data = excluded.data, updated_at = excluded.updated_at`,
+          args: [JSON.stringify(clientConfig), now],
+        });
+        writeSavedConfigFile(clientConfig);
+        res.json({ ok: true, synced: true });
+        return;
+      }
+      res.json({ ok: true, synced: false });
+    } catch {
+      res.json({ ok: false });
     }
   });
 
@@ -426,6 +486,9 @@ async function startServer() {
           `,
           args: [JSON.stringify(newConfig), now],
         });
+
+        // Also write directly to src/savedConfig.json so git push / Cloudflare Pages builds include all changes!
+        writeSavedConfigFile(newConfig);
 
         // Collect old assets that were replaced or explicitly marked for deletion
         const toDestroy = new Map<string, 'image' | 'video'>();

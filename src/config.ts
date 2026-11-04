@@ -1,3 +1,5 @@
+import savedConfigRaw from './savedConfig.json';
+
 // Helper to generate a dreamy, romantic music-box melody as a playable WAV data URL
 // so the <audio> player works out-of-the-box with real seeking, duration, and sound.
 // Swap `audioUrl` below with your own "/song.mp3" path anytime!
@@ -281,7 +283,7 @@ const createMemorySvg = (
 </svg>
 `)}`;
 
-export const config: AppConfig = {
+const baseDefaultConfig: AppConfig = {
   // 4-digit passcode for Screen 1 (Lock Screen)
   secretCode: '0214',
 
@@ -355,3 +357,27 @@ export const config: AppConfig = {
     sparkles: undefined,
   },
 };
+
+const savedOverride = (savedConfigRaw || {}) as Partial<AppConfig>;
+
+export const config: AppConfig = {
+  ...baseDefaultConfig,
+  ...savedOverride,
+  tulipNotes:
+    Array.isArray(savedOverride.tulipNotes) && savedOverride.tulipNotes.length === 6
+      ? (savedOverride.tulipNotes as [string, string, string, string, string, string])
+      : baseDefaultConfig.tulipNotes,
+  albumPhotos:
+    Array.isArray(savedOverride.albumPhotos) && savedOverride.albumPhotos.length > 0
+      ? savedOverride.albumPhotos
+      : baseDefaultConfig.albumPhotos,
+  illustrations: {
+    ...baseDefaultConfig.illustrations,
+    ...(savedOverride.illustrations || {}),
+  },
+  illustrationsPublicIds: {
+    ...(baseDefaultConfig.illustrationsPublicIds || {}),
+    ...(savedOverride.illustrationsPublicIds || {}),
+  },
+};
+
