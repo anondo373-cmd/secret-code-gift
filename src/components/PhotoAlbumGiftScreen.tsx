@@ -65,7 +65,7 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
   }, [handleNextPhoto, handlePrev, selectedIdx]);
 
   return (
-    <div className="relative w-full min-h-dvh lg:h-dvh bg-watercolor-clouds overflow-y-auto lg:overflow-hidden flex flex-col justify-between px-4 py-5 sm:px-8 lg:px-12">
+    <div className="relative w-full min-h-dvh bg-watercolor-clouds overflow-y-auto flex flex-col justify-between px-4 py-5 sm:px-8 lg:px-12">
       {/* Decorative Lace Corner & Bow */}
       <div className="pointer-events-none absolute top-0 left-0 z-10">
         <LaceCornerIllustration className="w-24 h-24 sm:w-36 sm:h-36" />
@@ -106,7 +106,7 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
 
       {/* Polaroid Scrapbook Grid (3x2 on desktop/tablet, 1-2 cols on mobile) */}
       <div className="relative z-20 flex-1 w-full max-w-5xl mx-auto flex items-center justify-center my-3">
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7 px-2 sm:px-4">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-6 px-2 sm:px-4">
           {photos.map((photo, index) => {
             const rotation = POLAROID_ROTATIONS[index % POLAROID_ROTATIONS.length];
             const tapeColor = TAPE_COLORS[index % TAPE_COLORS.length];
@@ -141,17 +141,17 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
                 {/* Pastel Washi Tape Strip at Top Center */}
                 <div
                   style={{ backgroundColor: tapeColor }}
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 rounded-sm border border-[#5A2A2A]/35 opacity-90 rotate-[-2deg] shadow-xs flex items-center justify-center"
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 rounded-sm border border-[#5A2A2A]/35 opacity-90 rotate-[-2deg] shadow-xs flex items-center justify-center z-20"
                   aria-hidden="true"
                 >
                   <span className="text-[10px] text-[#D6336C] leading-none">♥</span>
                 </div>
 
-                {/* Photo Frame Window */}
-                <div className="w-full h-32 sm:h-34 lg:h-36 rounded-xl overflow-hidden bg-[#FDEBF1] border border-[#F8C8D8] mb-2.5">
+                {/* Photo Frame Window - Full-size uncropped display */}
+                <div className="w-full h-52 sm:h-56 lg:h-48 rounded-xl overflow-hidden bg-[#FDEBF1] border border-[#F8C8D8] mb-2.5">
                   <PolaroidPhotoImage
                     photo={photo}
-                    className="group-hover:scale-105 transition-transform duration-300"
+                    className="group-hover:scale-[1.02] transition-transform duration-300"
                   />
                 </div>
 
@@ -185,7 +185,7 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setSelectedIdx(null)}
-            className="fixed inset-0 z-50 bg-[#5A2A2A]/55 backdrop-blur-xs flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-[#5A2A2A]/60 backdrop-blur-xs flex items-center justify-center p-4"
             role="dialog"
             aria-modal="true"
             aria-label="Memory photo viewer"
@@ -195,20 +195,20 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={prefersReducedMotion ? undefined : { scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-md bg-[#FFF3DC] rounded-3xl p-4 sm:p-6 border-3 border-[#5A2A2A] shadow-[0_20px_50px_rgba(90,42,42,0.35)]"
+              className="relative w-full max-w-lg bg-[#FFF3DC] rounded-3xl p-4 sm:p-6 border-3 border-[#5A2A2A] shadow-[0_20px_50px_rgba(90,42,42,0.35)]"
             >
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setSelectedIdx(null)}
                 aria-label="Close photo viewer"
-                className="absolute -top-3.5 -right-3.5 w-10 h-10 rounded-full bg-[#D6336C] text-[#FFF3DC] border-2 border-[#5A2A2A] shadow-md flex items-center justify-center hover:scale-105 active:scale-95 transition-transform cursor-pointer z-10"
+                className="absolute -top-3.5 -right-3.5 w-10 h-10 rounded-full bg-[#D6336C] text-[#FFF3DC] border-2 border-[#5A2A2A] shadow-md flex items-center justify-center hover:scale-105 active:scale-95 transition-transform cursor-pointer z-20"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Large Photo */}
-              <div className="w-full aspect-4/3 rounded-2xl overflow-hidden bg-[#FDEBF1] border-2 border-[#F8C8D8] mb-4">
+              {/* Full-Size Uncropped Photo */}
+              <div className="w-full h-[52vh] sm:h-[60vh] max-h-[520px] rounded-2xl overflow-hidden bg-[#FDEBF1] border-2 border-[#F8C8D8] mb-4">
                 <PolaroidPhotoImage photo={photos[selectedIdx]} />
               </div>
 

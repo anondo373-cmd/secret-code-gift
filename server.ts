@@ -296,10 +296,8 @@ async function startServer() {
       if (result.rows.length > 0) {
         const rawData = result.rows[0].data as string;
         const parsed = JSON.parse(rawData);
-        // Ensure src/savedConfig.json stays synced with DB
-        if (!readSavedConfigFile()) {
-          writeSavedConfigFile(parsed);
-        }
+        // Always keep src/savedConfig.json synced with latest DB state
+        writeSavedConfigFile(parsed);
         res.json({
           config: parsed,
           updatedAt: result.rows[0].updated_at,

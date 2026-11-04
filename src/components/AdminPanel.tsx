@@ -480,44 +480,6 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
               {loggingIn ? 'Signing in...' : 'Open Admin Studio →'}
             </button>
           </form>
-
-          {/* Environment Variables Setup Check Preview */}
-          {health && (
-            <div className="mt-6 pt-5 border-t border-[#F8C8D8]">
-              <div className="flex items-center justify-between mb-2.5">
-                <span className="font-fredoka text-xs font-semibold text-[#5A2A2A]/80">
-                  Environment Secrets Status
-                </span>
-                <button
-                  type="button"
-                  onClick={fetchHealth}
-                  className="text-xs font-fredoka text-[#D6336C] hover:underline cursor-pointer"
-                >
-                  Refresh
-                </button>
-              </div>
-              <div className="grid grid-cols-1 gap-1.5">
-                {REQUIRED_ENV_NAMES.map((envName) => {
-                  const isSet = Boolean(health[envName]);
-                  return (
-                    <div
-                      key={envName}
-                      className="flex items-center justify-between text-xs font-mono bg-white/80 px-3 py-1.5 rounded-lg border border-[#F8C8D8]"
-                    >
-                      <span className="text-[#5A2A2A]">{envName}</span>
-                      <span
-                        className={`font-bold ${
-                          isSet ? 'text-emerald-600' : 'text-[#D6336C]'
-                        }`}
-                      >
-                        {isSet ? '✓' : '✗'}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     );
@@ -1268,8 +1230,8 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
                         </div>
                       </div>
 
-                      <div className="w-full h-36 rounded-xl overflow-hidden bg-[#FDEBF1] border border-[#F8C8D8]">
-                        <OptimizedImage src={item.url} alt={item.caption} />
+                      <div className="w-full h-64 sm:h-72 rounded-xl overflow-hidden bg-[#FDEBF1] border border-[#F8C8D8]">
+                        <OptimizedImage src={item.url} alt={item.caption} fit="contain" />
                       </div>
 
                       <label className="min-h-[38px] w-full px-3 py-1.5 rounded-xl bg-[#D6336C] text-[#FFF3DC] font-fredoka text-xs font-semibold flex items-center justify-center gap-1.5 hover:brightness-105 transition-all cursor-pointer">

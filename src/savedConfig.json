@@ -1,1 +1,53 @@
-{}
+{
+  "secretCode": "1234",
+  "photo1Url": "data:image/svg+xml;utf8,%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22sky1%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23FDEBF1%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2255%25%22%20stop-color%3D%22%23F8C8D8%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23FFF3DC%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Crect%20width%3D%22400%22%20height%3D%22400%22%20fill%3D%22url(%23sky1)%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%2295%22%20r%3D%2246%22%20fill%3D%22%23FFF3DC%22%20opacity%3D%220.9%22%2F%3E%0A%20%20%3Cellipse%20cx%3D%22120%22%20cy%3D%22110%22%20rx%3D%2255%22%20ry%3D%2224%22%20fill%3D%22%23FFF3DC%22%20opacity%3D%220.8%22%2F%3E%0A%20%20%3Cellipse%20cx%3D%22155%22%20cy%3D%22115%22%20rx%3D%2245%22%20ry%3D%2220%22%20fill%3D%22%23FFF3DC%22%20opacity%3D%220.8%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20270%20Q200%20235%20400%20275%20L400%20400%20L0%20400%20Z%22%20fill%3D%22%23F4B8CE%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M40%20315%20L210%20280%20L360%20325%20L200%20375%20Z%22%20fill%3D%22%23FFF3DC%22%20stroke%3D%22%23D6336C%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3C!--%20Two%20cute%20teacups%20%26%20strawberries%20on%20picnic%20blanket%20--%3E%0A%20%20%3Cellipse%20cx%3D%22165%22%20cy%3D%22315%22%20rx%3D%2222%22%20ry%3D%228%22%20fill%3D%22%23F8C8D8%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%222.5%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M148%20298%20C148%20320%20182%20320%20182%20298%20Z%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%222.5%22%2F%3E%0A%20%20%3Cellipse%20cx%3D%22235%22%20cy%3D%22322%22%20rx%3D%2222%22%20ry%3D%228%22%20fill%3D%22%23F8C8D8%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%222.5%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M218%20305%20C218%20327%20252%20327%20252%20305%20Z%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%222.5%22%2F%3E%0A%20%20%3C!--%20Floating%20little%20hearts%20--%3E%0A%20%20%3Cpath%20d%3D%22M200%20225%20C200%20212%20180%20205%20180%20220%20C180%20233%20200%20242%20200%20248%20C200%20242%20220%20233%20220%20220%20C220%20205%20200%20212%20200%20225%20Z%22%20fill%3D%22%23D6336C%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M145%20185%20C145%20177%20133%20172%20133%20182%20C133%20190%20145%20196%20145%20200%20C145%20196%20157%20190%20157%20182%20C157%20172%20145%20177%20145%20185%20Z%22%20fill%3D%22%23D6336C%22%20opacity%3D%220.75%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M255%20180%20C255%20172%20243%20167%20243%20177%20C243%20185%20255%20191%20255%20195%20C255%20191%20267%20185%20267%20177%20C267%20167%20255%20172%20255%20180%20Z%22%20fill%3D%22%23D6336C%22%20opacity%3D%220.75%22%2F%3E%0A%3C%2Fsvg%3E%0A",
+  "photo2Url": "data:image/svg+xml;utf8,%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22sky2%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23F8C8D8%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2260%25%22%20stop-color%3D%22%23FDEBF1%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23FFF3DC%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Crect%20width%3D%22400%22%20height%3D%22400%22%20fill%3D%22url(%23sky2)%22%2F%3E%0A%20%20%3C!--%20Soft%20pastel%20hills%20%26%20cherry%20blossom%20petals%20--%3E%0A%20%20%3Ccircle%20cx%3D%2295%22%20cy%3D%2295%22%20r%3D%2210%22%20fill%3D%22%23FFF3DC%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%22310%22%20cy%3D%22120%22%20r%3D%228%22%20fill%3D%22%23FFF3DC%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%22260%22%20cy%3D%2275%22%20r%3D%2212%22%20fill%3D%22%23FFF3DC%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20290%20Q180%20250%20400%20285%20L400%20400%20L0%20400%20Z%22%20fill%3D%22%23E8B4C8%22%2F%3E%0A%20%20%3C!--%20Two%20cute%20cats%20sitting%20side%20by%20side%20watching%20sunset%20--%3E%0A%20%20%3C!--%20Left%20Cat%20--%3E%0A%20%20%3Cellipse%20cx%3D%22172%22%20cy%3D%22265%22%20rx%3D%2228%22%20ry%3D%2234%22%20fill%3D%22%23FFF3DC%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%22172%22%20cy%3D%22220%22%20r%3D%2222%22%20fill%3D%22%23FFF3DC%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3Cpolygon%20points%3D%22154%2C208%20158%2C188%20170%2C202%22%20fill%3D%22%23F8C8D8%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%222.5%22%2F%3E%0A%20%20%3Cpolygon%20points%3D%22190%2C208%20186%2C188%20174%2C202%22%20fill%3D%22%23F8C8D8%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%222.5%22%2F%3E%0A%20%20%3C!--%20Right%20Cat%20--%3E%0A%20%20%3Cellipse%20cx%3D%22226%22%20cy%3D%22268%22%20rx%3D%2226%22%20ry%3D%2232%22%20fill%3D%22%23F8C8D8%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%22226%22%20cy%3D%22226%22%20r%3D%2220%22%20fill%3D%22%23F8C8D8%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3Cpolygon%20points%3D%22210%2C214%20214%2C195%20224%2C208%22%20fill%3D%22%23FFF3DC%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%222.5%22%2F%3E%0A%20%20%3Cpolygon%20points%3D%22242%2C214%20238%2C195%20228%2C208%22%20fill%3D%22%23FFF3DC%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%222.5%22%2F%3E%0A%20%20%3C!--%20Intertwined%20tails%20--%3E%0A%20%20%3Cpath%20d%3D%22M150%20290%20Q130%20265%20145%20250%22%20fill%3D%22none%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M248%20290%20Q270%20265%20255%20250%22%20fill%3D%22none%22%20stroke%3D%22%235A2A2A%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%3C!--%20Heart%20above%20them%20--%3E%0A%20%20%3Cpath%20d%3D%22M200%20165%20C200%20150%20176%20142%20176%20160%20C176%20175%20200%20186%20200%20194%20C200%20186%20224%20175%20224%20160%20C224%20142%20200%20150%20200%20165%20Z%22%20fill%3D%22%23D6336C%22%2F%3E%0A%3C%2Fsvg%3E%0A",
+  "tulipNotes": [
+    "Your laugh is my favorite sound in the world",
+    "Thank you for making ordinary days feel magical",
+    "Every little moment with you is a treasure",
+    "You bring the warmest sunshine wherever you go",
+    "Forever grateful for your kindness and sweet heart",
+    "Just like these tulips, my love for you blooms brighter every day"
+  ],
+  "songTitle": "Ed Sheeran - Perfect (Official Music Video)",
+  "artist": "Ed Sheeran",
+  "albumArtUrl": "https://i.ytimg.com/vi/2Vv-BfVoq4g/hqdefault.jpg",
+  "audioUrl": "https://youtu.be/2Vv-BfVoq4g",
+  "letterText": "My Dearest,\n\nI wanted to make this little corner of the internet just for you—a tiny keepsake filled with your favorite things. Every time I think about us, I find myself smiling at the smallest memories: our late-night talks, our shared jokes, and the gentle way you make everything feel safe and bright.\n\nNo matter how busy life gets, please always remember how deeply cherished you are. Thank you for being my favorite person, my comfort, and my happiest adventure.",
+  "signOffText": "With all my love, always ♥",
+  "albumPhotos": [
+    {
+      "url": "https://res.cloudinary.com/mwkcggpq/image/upload/v1793824244/love-gift/atagsp2n6txfecqdphvt.webp",
+      "caption": "Cozy coffee dates where hours felt like minutes",
+      "date": "Moment 02 · Little Traditions",
+      "publicId": "love-gift/atagsp2n6txfecqdphvt"
+    },
+    {
+      "url": "https://res.cloudinary.com/mwkcggpq/image/upload/v1793824262/love-gift/lbi5oun207xhyrlmdv85.webp",
+      "caption": "Sharing one umbrella on a sudden rainy evening",
+      "date": "Moment 03 · Rainy Day Magic",
+      "publicId": "love-gift/lbi5oun207xhyrlmdv85"
+    },
+    {
+      "url": "https://res.cloudinary.com/mwkcggpq/image/upload/v1793824290/love-gift/gqw2fdehr9gidhkv83nf.webp",
+      "caption": "Walking side by side watching the pink sky fade",
+      "date": "Moment 04 · Golden Hour",
+      "publicId": "love-gift/gqw2fdehr9gidhkv83nf"
+    },
+    {
+      "url": "https://res.cloudinary.com/mwkcggpq/image/upload/v1793824333/love-gift/q6m4hqcktuaybmpdzcdi.webp",
+      "caption": "City lights and holding hands at the fair",
+      "date": "Moment 05 · Bright Lights",
+      "publicId": "love-gift/q6m4hqcktuaybmpdzcdi"
+    },
+    {
+      "url": "https://res.cloudinary.com/mwkcggpq/image/upload/v1793824456/love-gift/tiqislqxb7aujqzpvjho.webp",
+      "caption": "Late-night stargazing and talking about our dreams",
+      "date": "Moment 06 · Forever To Go",
+      "publicId": "love-gift/tiqislqxb7aujqzpvjho"
+    }
+  ],
+  "illustrations": {},
+  "illustrationsPublicIds": {}
+}
