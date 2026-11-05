@@ -6,7 +6,6 @@ import { useAppConfig } from '../context/ConfigContext';
 import {
   BowIllustration,
   LaceCornerIllustration,
-  SparkleSticker,
 } from './Illustrations';
 import { OptimizedImage } from './OptimizedImage';
 
@@ -67,25 +66,23 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
   return (
     <div className="relative w-full min-h-dvh bg-watercolor-clouds overflow-y-auto flex flex-col justify-between px-4 py-5 sm:px-8 lg:px-12">
       {/* Decorative Lace Corner & Bow */}
-      <div className="pointer-events-none absolute top-0 left-0 z-10">
-        <LaceCornerIllustration className="w-24 h-24 sm:w-36 sm:h-36" />
+      <div className="pointer-events-none absolute top-0 left-0 z-0 opacity-75">
+        <LaceCornerIllustration className="w-20 h-20 sm:w-32 sm:h-32" />
       </div>
-      <div className="pointer-events-none absolute bottom-3 left-5 z-10 hidden sm:block">
+      <div className="pointer-events-none absolute bottom-3 left-5 z-0 hidden sm:block">
         <BowIllustration className="w-16 h-16 -rotate-12 opacity-90" />
       </div>
 
-      {/* Scattered Sparkles & Hearts */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <SparkleSticker className="w-5 h-5 absolute top-14 right-32 opacity-75" />
-        <SparkleSticker className="w-6 h-6 absolute bottom-12 right-1/4 opacity-75" />
-        <span className="absolute top-20 left-40 text-[#D6336C]/50 text-xl select-none">♥</span>
-        <span className="absolute bottom-20 right-12 text-[#D6336C]/50 text-2xl select-none">♥</span>
+      {/* Subtle Hearts */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+        <span className="absolute top-20 left-40 text-[#D6336C]/50 text-xl select-none hidden sm:inline">♥</span>
+        <span className="absolute bottom-20 right-12 text-[#D6336C]/50 text-2xl select-none hidden sm:inline">♥</span>
       </div>
 
       {/* Header Row: Centered Title & Subtitle + Top-Right "Next →" Button */}
-      <div className="relative z-20 flex items-center justify-between w-full max-w-6xl mx-auto pt-1 sm:pt-2">
-        <div className="w-24 sm:w-28 shrink-0" aria-hidden="true" />
-        <div className="text-center">
+      <div className="relative z-20 flex items-center justify-between gap-3 w-full max-w-6xl mx-auto pt-1 sm:pt-2">
+        <div className="hidden sm:block sm:w-28 shrink-0" aria-hidden="true" />
+        <div className="text-left sm:text-center min-w-0">
           <h1 className="font-fredoka text-2xl sm:text-4xl lg:text-[44px] font-bold text-[#D6336C] leading-tight drop-shadow-[0_3px_0_rgba(255,255,255,0.9)]">
             Our Sweetest Moments
           </h1>
@@ -93,11 +90,11 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
             Little snapshots of us to treasure forever 💗
           </p>
         </div>
-        <div className="w-24 sm:w-28 shrink-0 flex justify-end">
+        <div className="sm:w-28 shrink-0 flex justify-end">
           <button
             type="button"
             onClick={onNext}
-            className="min-h-[42px] px-5 py-2 rounded-full bg-[#D6336C] text-[#FFF3DC] font-fredoka font-semibold text-sm sm:text-base shadow-[0_4px_0_#5A2A2A] hover:brightness-105 active:translate-y-0.5 transition-all cursor-pointer whitespace-nowrap shrink-0"
+            className="min-h-[40px] sm:min-h-[42px] px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#D6336C] text-[#FFF3DC] font-fredoka font-semibold text-sm sm:text-base shadow-[0_4px_0_#5A2A2A] hover:brightness-105 active:translate-y-0.5 transition-all cursor-pointer whitespace-nowrap shrink-0"
           >
             Next →
           </button>
@@ -156,7 +153,7 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
                 </div>
 
                 {/* Handwritten Caption & Date */}
-                <p className="font-patrick text-base sm:text-lg text-[#5A2A2A] leading-snug line-clamp-1 font-medium">
+                <p className="font-patrick text-base sm:text-lg text-[#5A2A2A] leading-snug line-clamp-2 break-words font-medium">
                   {photo.caption}
                 </p>
                 <span className="font-fredoka text-[11px] text-[#D6336C]/85 mt-0.5">
@@ -171,7 +168,7 @@ export function PhotoAlbumGiftScreen({ onNext }: PhotoAlbumGiftScreenProps) {
       {/* Bottom Helper Caption */}
       <div className="relative z-20 text-center pb-1">
         <span className="font-fredoka text-xs sm:text-sm text-[#5A2A2A]/70">
-          Tap any polaroid to view memory up close ✨
+          Tap any polaroid to view memory up close 💗
         </span>
       </div>
 

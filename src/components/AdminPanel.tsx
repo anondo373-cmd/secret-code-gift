@@ -14,7 +14,6 @@ import {
   Image as ImageIcon,
   Heart,
   FileText,
-  Sparkles,
   Lock,
   Eye,
   ArrowUp,
@@ -1005,7 +1004,7 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
                                 }}
                                 className="w-full py-1.5 px-3 rounded-xl bg-[#FFF3DC] hover:bg-[#FDEBF1] border border-[#F8C8D8] font-fredoka text-xs font-semibold text-[#D6336C] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                               >
-                                <Sparkles className="w-3.5 h-3.5" />
+                                <Music className="w-3.5 h-3.5" />
                                 Auto-fill Song Title, Artist & Cover from YouTube
                               </button>
                             </div>
@@ -1120,7 +1119,7 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
                     rows={8}
                     value={draft.letterText}
                     onChange={(e) => setDraft((d) => ({ ...d, letterText: e.target.value }))}
-                    className="w-full px-12 py-4 rounded-2xl bg-notebook-paper border border-[#F8C8D8] font-patrick text-xl text-[#5A2A2A] leading-[32px] focus:outline-none focus:border-[#D6336C]"
+                    className="w-full pl-12 pr-6 sm:pl-14 sm:pr-8 py-4 rounded-2xl bg-notebook-paper border border-[#F8C8D8] font-patrick text-xl text-[#5A2A2A] leading-[32px] focus:outline-none focus:border-[#D6336C]"
                   />
                 </div>
                 <div>

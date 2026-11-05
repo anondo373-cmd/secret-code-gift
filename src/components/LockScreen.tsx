@@ -2,22 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Delete } from 'lucide-react';
 import { useAppConfig } from '../context/ConfigContext';
-import { BowIllustration, HeartPhotoFrame, SparkleSticker } from './Illustrations';
+import { BowIllustration, HeartPhotoFrame } from './Illustrations';
 
 interface LockScreenProps {
   onUnlockNext: () => void;
   onSecretAdmin?: () => void;
 }
-
-const SPARKLE_POSITIONS = [
-  { top: '8%', left: '7%', size: 'w-6 h-6', delay: 0 },
-  { top: '16%', left: '42%', size: 'w-5 h-5', delay: 0.4 },
-  { top: '78%', left: '8%', size: 'w-7 h-7', delay: 0.8 },
-  { top: '85%', left: '44%', size: 'w-5 h-5', delay: 1.2 },
-  { top: '12%', left: '62%', size: 'w-4 h-4', delay: 0.6 },
-  { top: '74%', left: '91%', size: 'w-6 h-6', delay: 1.0 },
-  { top: '44%', left: '5%', size: 'w-4 h-4', delay: 0.3 },
-];
 
 export function LockScreen({ onUnlockNext, onSecretAdmin }: LockScreenProps) {
   const { appConfig: config } = useAppConfig();
@@ -99,40 +89,17 @@ export function LockScreen({ onUnlockNext, onSecretAdmin }: LockScreenProps) {
 
   return (
     <div className="relative w-full min-h-dvh lg:h-dvh bg-[#FDEBF1] overflow-y-auto lg:overflow-hidden flex items-center justify-center px-4 py-6 sm:px-8 lg:px-14">
-      {/* Scattered Sparkles / Stars */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        {SPARKLE_POSITIONS.map((sp, i) => (
-          <motion.div
-            key={i}
-            style={{ top: sp.top, left: sp.left }}
-            className="absolute"
-            animate={
-              prefersReducedMotion
-                ? undefined
-                : { scale: [1, 1.2, 1], opacity: [0.65, 1, 0.65] }
-            }
-            transition={{
-              duration: 2.8,
-              repeat: Infinity,
-              delay: sp.delay,
-              ease: 'easeInOut',
-            }}
-          >
-            <SparkleSticker className={sp.size} />
-          </motion.div>
-        ))}
-      </div>
 
       {/* Top-Right Pink Ribbon Bow (tap 5 times for secret Admin access) */}
       <div
         onClick={handleBowTap}
-        className=" absolute top-3 right-4 sm:top-5 sm:right-7 z-20"
+        className="absolute top-2 right-2 sm:top-5 sm:right-7 z-20"
       >
-        <BowIllustration className="w-20 h-20 sm:w-28 sm:h-28 rotate-12" />
+        <BowIllustration className="w-16 h-16 sm:w-26 sm:h-26 rotate-12" />
       </div>
 
       {/* Main Landscape-first 2-Column Layout (Stacks on Portrait Phones) */}
-      <div className="relative z-10 w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-10">
+      <div className="relative z-10 w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-10 pt-6 sm:pt-0">
         {/* Left: Two Overlapping Heart-Shaped Photo Frames */}
         <div className="lg:col-span-6 flex items-center justify-center">
           <div className="relative w-[290px] h-[250px] sm:w-[370px] sm:h-[320px] lg:w-[430px] lg:h-[370px]">

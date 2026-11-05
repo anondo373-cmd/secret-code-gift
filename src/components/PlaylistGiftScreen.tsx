@@ -290,12 +290,12 @@ export function PlaylistGiftScreen({ onNext }: PlaylistGiftScreenProps) {
         <audio ref={audioRef} src={config.audioUrl} preload="metadata" />
       )}
 
-      {/* Hand-drawn Music-Note Swirl Lines in Top-Right & Bottom-Left Corners */}
-      <div className="pointer-events-none absolute top-3 right-4 sm:top-5 sm:right-8 z-10">
-        <MusicSwirlIllustration variant="top-right" className="w-40 h-22 sm:w-56 sm:h-30" />
+      {/* Hand-drawn Music-Note Swirl Lines in Top-Right & Bottom-Left Corners (kept behind text and hidden on tight mobile screens so they never overlap the heading) */}
+      <div className="pointer-events-none absolute top-2 right-3 sm:top-4 sm:right-6 z-0 hidden md:block opacity-75">
+        <MusicSwirlIllustration variant="top-right" className="w-36 h-20 lg:w-48 lg:h-26" />
       </div>
-      <div className="pointer-events-none absolute bottom-3 left-4 sm:bottom-5 sm:left-8 z-10">
-        <MusicSwirlIllustration variant="bottom-left" className="w-40 h-22 sm:w-56 sm:h-30" />
+      <div className="pointer-events-none absolute bottom-2 left-3 sm:bottom-4 sm:left-6 z-0 hidden md:block opacity-75">
+        <MusicSwirlIllustration variant="bottom-left" className="w-36 h-20 lg:w-48 lg:h-26" />
       </div>
 
       {/* Top Heading (Cormorant Garamond) + Italic Subtitle */}
@@ -303,12 +303,12 @@ export function PlaylistGiftScreen({ onNext }: PlaylistGiftScreenProps) {
         initial={prefersReducedMotion ? false : { opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="relative z-20 text-center pt-1 sm:pt-2"
+        className="relative z-20 text-center pt-1 sm:pt-2 px-2"
       >
-        <h1 className="font-cormorant text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#5A2A2A] leading-tight">
+        <h1 className="font-cormorant text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#5A2A2A] leading-tight drop-shadow-[0_2px_0_rgba(255,255,255,0.85)]">
           A Playlist Made For You
         </h1>
-        <p className="font-cormorant italic text-xl sm:text-2xl lg:text-[26px] text-[#D6336C] font-semibold">
+        <p className="font-cormorant italic text-lg sm:text-2xl lg:text-[26px] text-[#D6336C] font-semibold mt-0.5">
           Songs that somehow sound like us
         </p>
       </motion.div>
@@ -320,24 +320,26 @@ export function PlaylistGiftScreen({ onNext }: PlaylistGiftScreenProps) {
           initial={prefersReducedMotion ? false : { opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.45 }}
-          className="w-full max-w-[300px] sm:max-w-[320px] rounded-3xl bg-[#111111] text-white p-5 sm:p-6 shadow-[0_14px_30px_rgba(17,17,17,0.28)] border-2 border-[#FFF3DC]/20"
+          className="w-full max-w-[310px] sm:max-w-[330px] rounded-3xl bg-[#111111] text-white p-5 sm:p-6 shadow-[0_14px_30px_rgba(17,17,17,0.28)] border-2 border-[#FFF3DC]/20"
         >
           {/* Square Album Art */}
-          <div className="w-full aspect-square rounded-2xl overflow-hidden bg-[#F8C8D8] mb-4 border border-white/10">
+          <div className="w-full aspect-square rounded-2xl overflow-hidden bg-[#1a1a1a] mb-4 border border-white/10">
             <OptimizedImage
               src={config.albumArtUrl}
               alt={config.songTitle}
               sizes="320px"
+              fit="cover"
+              className="scale-[1.35]"
             />
           </div>
 
           {/* Song Title, Artist & Green Liked-Heart */}
-          <div className="flex items-center justify-between gap-3 mb-3">
-            <div className="min-w-0">
-              <h2 className="font-fredoka text-lg font-semibold text-white truncate">
+          <div className="flex items-start justify-between gap-2.5 mb-3">
+            <div className="min-w-0 flex-1">
+              <h2 className="font-fredoka text-base sm:text-lg font-semibold text-white leading-snug break-words line-clamp-2">
                 {config.songTitle}
               </h2>
-              <p className="font-fredoka text-xs text-white/65 truncate">
+              <p className="font-fredoka text-xs text-white/70 truncate mt-0.5">
                 {config.artist}
               </p>
             </div>
@@ -345,7 +347,7 @@ export function PlaylistGiftScreen({ onNext }: PlaylistGiftScreenProps) {
               type="button"
               onClick={() => setIsLiked((v) => !v)}
               aria-label={isLiked ? 'Unlike song' : 'Like song'}
-              className="min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/10 transition-colors cursor-pointer shrink-0"
+              className="min-w-[38px] min-h-[38px] flex items-center justify-center rounded-full hover:bg-white/10 transition-colors cursor-pointer shrink-0"
             >
               <Heart
                 className={`w-5 h-5 transition-transform active:scale-125 ${

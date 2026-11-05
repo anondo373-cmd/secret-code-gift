@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { GiftBoxIllustration, SparkleSticker } from './Illustrations';
+import { GiftBoxIllustration } from './Illustrations';
 
 interface GiftHubScreenProps {
   unlockedUpTo: number; // 1 = Gift 1 ready, 2 = Gift 2 ready, 3 = Gift 3 ready, 4 = Gift 4 ready, 5 = all 4 finished
@@ -20,13 +20,6 @@ export function GiftHubScreen({ unlockedUpTo, onOpenGift, onReplay }: GiftHubScr
 
   return (
     <div className="relative w-full min-h-dvh lg:h-dvh bg-watercolor-clouds overflow-y-auto lg:overflow-hidden flex flex-col items-center justify-center px-4 py-8 sm:px-8">
-      {/* Subtle scattered sparkles */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <SparkleSticker className="w-6 h-6 absolute top-10 left-12 opacity-75" />
-        <SparkleSticker className="w-5 h-5 absolute top-16 right-16 opacity-75" />
-        <SparkleSticker className="w-6 h-6 absolute bottom-12 left-20 opacity-75" />
-        <SparkleSticker className="w-5 h-5 absolute bottom-14 right-24 opacity-75" />
-      </div>
 
       {/* Centered Heading & Subtitle */}
       <motion.div

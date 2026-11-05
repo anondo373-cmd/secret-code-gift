@@ -4,7 +4,6 @@ import { useAppConfig } from '../context/ConfigContext';
 import {
   CalicoCatIllustration,
   CherryBlossomsIllustration,
-  SparkleSticker,
 } from './Illustrations';
 
 interface LetterGiftScreenProps {
@@ -43,11 +42,6 @@ export function LetterGiftScreen({ onNext }: LetterGiftScreenProps) {
 
   return (
     <div className="relative w-full min-h-dvh lg:h-dvh bg-watercolor-clouds overflow-y-auto lg:overflow-hidden flex flex-col justify-between px-4 py-6 sm:px-10 lg:px-14">
-      {/* Subtle Sparkles */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <SparkleSticker className="w-5 h-5 absolute top-14 left-1/2 opacity-70" />
-        <SparkleSticker className="w-6 h-6 absolute bottom-24 left-1/4 opacity-70" />
-      </div>
 
       {/* Right Edge: Vertical Branch of Pink Cherry Blossoms Swaying Lightly */}
       <motion.div
@@ -62,14 +56,14 @@ export function LetterGiftScreen({ onNext }: LetterGiftScreenProps) {
           ease: 'easeInOut',
         }}
         style={{ transformOrigin: 'top right' }}
-        className="pointer-events-none absolute top-4 right-0 z-10"
+        className="pointer-events-none absolute top-4 right-0 z-0 opacity-70 hidden sm:block"
       >
-        <CherryBlossomsIllustration className="w-24 h-72 sm:w-32 sm:h-96 lg:w-36 lg:h-[430px]" />
+        <CherryBlossomsIllustration className="w-24 h-72 sm:w-28 sm:h-88 lg:w-36 lg:h-[430px]" />
       </motion.div>
 
       {/* Top-Left Heading: "A Letter From My Heart" (Fredoka, raspberry) */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto pt-1">
-        <h1 className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-bold text-[#D6336C] drop-shadow-[0_3px_0_rgba(255,255,255,0.9)]">
+      <div className="relative z-20 w-full max-w-6xl mx-auto pt-1 sm:pr-24">
+        <h1 className="font-fredoka text-2xl sm:text-4xl lg:text-5xl font-bold text-[#D6336C] drop-shadow-[0_3px_0_rgba(255,255,255,0.9)]">
           A Letter From My Heart
         </h1>
       </div>
@@ -107,15 +101,15 @@ export function LetterGiftScreen({ onNext }: LetterGiftScreenProps) {
           </div>
 
           {/* Lined Paper Body */}
-          <div className="bg-notebook-paper px-8 sm:px-14 pt-4 pb-7 min-h-[290px] sm:min-h-[340px] flex flex-col justify-between">
-            <div className="font-patrick text-lg sm:text-xl lg:text-[22px] text-[#5A2A2A] leading-[32px] whitespace-pre-wrap">
+          <div className="bg-notebook-paper pl-12 pr-6 sm:pl-16 sm:pr-12 pt-4 pb-7 min-h-[290px] sm:min-h-[340px] flex flex-col justify-between">
+            <div className="font-patrick text-lg sm:text-xl lg:text-[22px] text-[#5A2A2A] leading-[32px] whitespace-pre-wrap break-words">
               {fullText.slice(0, charCount)}
               {!isFinishedTyping && (
                 <span className="inline-block w-2 h-5 ml-0.5 bg-[#D6336C] animate-pulse align-middle" />
               )}
             </div>
 
-            <div className="mt-6 flex items-center justify-between">
+            <div className="mt-6 flex items-center justify-between gap-2">
               <span className="font-fredoka text-xs text-[#5A2A2A]/50">
                 {!isFinishedTyping ? 'Tap paper to skip typing' : ''}
               </span>
@@ -123,7 +117,7 @@ export function LetterGiftScreen({ onNext }: LetterGiftScreenProps) {
                 <motion.p
                   initial={prefersReducedMotion ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="font-patrick text-xl sm:text-2xl text-[#D6336C] text-right font-bold"
+                  className="font-patrick text-xl sm:text-2xl text-[#D6336C] text-right font-bold break-words"
                 >
                   {config.signOffText}
                 </motion.p>
@@ -134,7 +128,7 @@ export function LetterGiftScreen({ onNext }: LetterGiftScreenProps) {
       </div>
 
       {/* Bottom Row: Calico Cat Hugging Heart (Bottom-Left) + "Next →" Pill Button (Bottom-Right) */}
-      <div className="relative z-20 flex items-end justify-between w-full max-w-6xl mx-auto">
+      <div className="relative z-20 flex items-end justify-between w-full max-w-6xl mx-auto pt-1">
         <motion.div
           animate={
             prefersReducedMotion
@@ -146,9 +140,9 @@ export function LetterGiftScreen({ onNext }: LetterGiftScreenProps) {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="-mt-6 sm:-mt-10"
+          className="mt-0 lg:-mt-8"
         >
-          <CalicoCatIllustration className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40" />
+          <CalicoCatIllustration className="w-24 h-24 sm:w-32 sm:h-32 lg:w-38 lg:h-38" />
         </motion.div>
 
         <button

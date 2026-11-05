@@ -4,7 +4,6 @@ import { useAppConfig } from '../context/ConfigContext';
 import {
   BowIllustration,
   LaceCornerIllustration,
-  SparkleSticker,
   TulipBouquetIllustration,
 } from './Illustrations';
 
@@ -21,31 +20,29 @@ export function TulipsGiftScreen({ onNext }: TulipsGiftScreenProps) {
   return (
     <div className="relative w-full min-h-dvh lg:h-dvh bg-watercolor-clouds overflow-y-auto lg:overflow-hidden flex flex-col justify-between px-4 py-5 sm:px-8 lg:px-12">
       {/* Lace Trim in Top-Left Corner */}
-      <div className="pointer-events-none absolute top-0 left-0 z-10">
-        <LaceCornerIllustration className="w-28 h-28 sm:w-40 sm:h-40 lg:w-48 lg:h-48" />
+      <div className="pointer-events-none absolute top-0 left-0 z-0 opacity-75">
+        <LaceCornerIllustration className="w-20 h-20 sm:w-36 sm:h-36 lg:w-44 lg:h-44" />
       </div>
 
       {/* Small Hearts & Ribbon Accents */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <span className="absolute top-16 left-44 text-[#D6336C]/60 text-xl select-none">♥</span>
-        <span className="absolute bottom-14 left-12 text-[#D6336C]/50 text-2xl select-none">♥</span>
-        <span className="absolute bottom-20 right-14 text-[#D6336C]/60 text-xl select-none">♥</span>
-        <SparkleSticker className="w-5 h-5 absolute top-24 right-24" />
-        <SparkleSticker className="w-6 h-6 absolute bottom-10 left-1/3" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+        <span className="absolute top-16 left-44 text-[#D6336C]/60 text-xl select-none hidden sm:inline">♥</span>
+        <span className="absolute bottom-14 left-12 text-[#D6336C]/50 text-2xl select-none hidden sm:inline">♥</span>
+        <span className="absolute bottom-20 right-14 text-[#D6336C]/60 text-xl select-none hidden sm:inline">♥</span>
         <BowIllustration className="w-16 h-16 absolute bottom-4 left-6 -rotate-12 opacity-85 hidden sm:block" />
       </div>
 
       {/* Top Header Row: Centered Heading + Top-Right "Next →" Pill Button */}
-      <div className="relative z-20 flex items-center justify-between w-full max-w-6xl mx-auto pt-2 sm:pt-3">
-        <div className="w-24 sm:w-28 shrink-0" aria-hidden="true" />
-        <h1 className="font-fredoka text-2xl sm:text-4xl lg:text-5xl font-bold text-[#D6336C] text-center drop-shadow-[0_3px_0_rgba(255,255,255,0.9)]">
+      <div className="relative z-20 flex items-center justify-between gap-3 w-full max-w-6xl mx-auto pt-2 sm:pt-3">
+        <div className="hidden sm:block sm:w-28 shrink-0" aria-hidden="true" />
+        <h1 className="font-fredoka text-2xl sm:text-4xl lg:text-5xl font-bold text-[#D6336C] text-left sm:text-center drop-shadow-[0_3px_0_rgba(255,255,255,0.9)]">
           Your Favorite Tulips
         </h1>
-        <div className="w-24 sm:w-28 shrink-0 flex justify-end">
+        <div className="sm:w-28 shrink-0 flex justify-end">
           <button
             type="button"
             onClick={onNext}
-            className="min-h-[42px] px-5 py-2 rounded-full bg-[#D6336C] text-[#FFF3DC] font-fredoka font-semibold text-sm sm:text-base shadow-[0_4px_0_#5A2A2A] hover:brightness-105 active:translate-y-0.5 transition-all cursor-pointer whitespace-nowrap shrink-0"
+            className="min-h-[40px] sm:min-h-[42px] px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#D6336C] text-[#FFF3DC] font-fredoka font-semibold text-sm sm:text-base shadow-[0_4px_0_#5A2A2A] hover:brightness-105 active:translate-y-0.5 transition-all cursor-pointer whitespace-nowrap shrink-0"
           >
             Next →
           </button>
@@ -68,11 +65,11 @@ export function TulipsGiftScreen({ onNext }: TulipsGiftScreenProps) {
                 stiffness: 260,
                 damping: 20,
               }}
-              className={`relative w-full max-w-[300px] rounded-3xl bg-[#FFF3DC] border-2 border-[#D6336C]/65 px-5 py-3.5 shadow-[0_5px_0_#F8C8D8] ${
+              className={`relative w-full max-w-[310px] rounded-3xl bg-[#FFF3DC] border-2 border-[#D6336C]/65 px-5 py-3.5 shadow-[0_5px_0_#F8C8D8] ${
                 idx === 1 ? 'lg:mr-4' : ''
               }`}
             >
-              <p className="font-script text-xl sm:text-2xl font-semibold text-[#5A2A2A] leading-snug text-center">
+              <p className="font-script text-xl sm:text-2xl font-semibold text-[#5A2A2A] leading-snug text-center break-words">
                 {note}
               </p>
               {/* Little speech bubble tail pointing toward the bouquet on desktop */}
@@ -108,11 +105,11 @@ export function TulipsGiftScreen({ onNext }: TulipsGiftScreenProps) {
                 stiffness: 260,
                 damping: 20,
               }}
-              className={`relative w-full max-w-[300px] rounded-3xl bg-[#FFF3DC] border-2 border-[#D6336C]/65 px-5 py-3.5 shadow-[0_5px_0_#F8C8D8] ${
+              className={`relative w-full max-w-[310px] rounded-3xl bg-[#FFF3DC] border-2 border-[#D6336C]/65 px-5 py-3.5 shadow-[0_5px_0_#F8C8D8] ${
                 idx === 1 ? 'lg:ml-4' : ''
               }`}
             >
-              <p className="font-script text-xl sm:text-2xl font-semibold text-[#5A2A2A] leading-snug text-center">
+              <p className="font-script text-xl sm:text-2xl font-semibold text-[#5A2A2A] leading-snug text-center break-words">
                 {note}
               </p>
               {/* Little speech bubble tail pointing toward the bouquet on desktop */}
