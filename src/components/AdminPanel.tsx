@@ -599,8 +599,8 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
             { id: 'lock', label: '1. Lock & Heart Photos', icon: Lock },
             { id: 'tulips', label: '2. Gift 1: Tulips', icon: Heart },
             { id: 'playlist', label: '3. Gift 2: Playlist', icon: Music },
-            { id: 'letter', label: '4. Gift 3: Letter', icon: FileText },
-            { id: 'album', label: '5. Gift 4: Photo Album', icon: ImageIcon },
+            { id: 'album', label: '4. Gift 3: Photo Album', icon: ImageIcon },
+            { id: 'letter', label: '5. Gift 4: Letter', icon: FileText },
           ].map((tab) => {
             const Icon = tab.icon;
             const active = activeTab === tab.id;
@@ -1088,13 +1088,13 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
             </div>
           )}
 
-          {/* TAB 4: GIFT 3 - LETTER */}
+          {/* TAB 5: GIFT 4 - LETTER */}
           {activeTab === 'letter' && (
             <div className="space-y-5">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h2 className="font-fredoka text-2xl font-bold text-[#D6336C]">
-                    Gift 3: A Letter From My Heart
+                    Gift 4: A Letter From My Heart
                   </h2>
                   <p className="font-fredoka text-xs text-[#5A2A2A]/75">
                     Write your heartfelt letter and sign-off. It will be revealed with a typewriter effect on lined notebook paper.
@@ -1102,7 +1102,7 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
                 </div>
                 <button
                   type="button"
-                  onClick={() => handlePreviewWithDraft('gift3')}
+                  onClick={() => handlePreviewWithDraft('gift4')}
                   className="min-h-[38px] px-4 py-1.5 rounded-xl bg-white border border-[#F8C8D8] font-fredoka text-xs font-semibold text-[#D6336C] hover:bg-[#FDEBF1] transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0"
                 >
                   <Eye className="w-3.5 h-3.5" />
@@ -1137,13 +1137,13 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
             </div>
           )}
 
-          {/* TAB 5: GIFT 4 - PHOTO ALBUM */}
+          {/* TAB 4: GIFT 3 - PHOTO ALBUM */}
           {activeTab === 'album' && (
             <div className="space-y-5">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h2 className="font-fredoka text-2xl font-bold text-[#D6336C]">
-                    Gift 4: Polaroid Photo Album ({draft.albumPhotos.length})
+                    Gift 3: Polaroid Photo Album ({draft.albumPhotos.length})
                   </h2>
                   <p className="font-fredoka text-xs text-[#5A2A2A]/75">
                     Upload your favorite pictures together, edit captions & dates, or reorder polaroids.
@@ -1152,7 +1152,7 @@ export function AdminPanel({ onClose, onPreviewScreen }: AdminPanelProps) {
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
-                    onClick={() => handlePreviewWithDraft('gift4')}
+                    onClick={() => handlePreviewWithDraft('gift3')}
                     className="min-h-[38px] px-3.5 py-1.5 rounded-xl bg-white border border-[#F8C8D8] font-fredoka text-xs font-semibold text-[#D6336C] hover:bg-[#FDEBF1] transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0"
                   >
                     <Eye className="w-3.5 h-3.5" />

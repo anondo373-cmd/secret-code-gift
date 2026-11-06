@@ -19,7 +19,7 @@ export function GiftHubScreen({ unlockedUpTo, onOpenGift, onReplay }: GiftHubScr
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className="relative w-full min-h-dvh lg:h-dvh bg-watercolor-clouds overflow-y-auto lg:overflow-hidden flex flex-col items-center justify-center px-4 py-8 sm:px-8">
+    <div className="relative w-full min-h-dvh bg-watercolor-clouds flex flex-col items-center justify-center px-4 py-8 sm:px-8">
 
       {/* Centered Heading & Subtitle */}
       <motion.div

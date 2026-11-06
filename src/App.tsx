@@ -128,7 +128,12 @@ export default function App() {
     setUnlockedUpTo(5);
     setPreviousScreen(target);
     setScreen(target);
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  }, [screen]);
 
   return (
     <ConfigProvider>
@@ -138,7 +143,7 @@ export default function App() {
           onPreviewScreen={handlePreviewScreenFromAdmin}
         />
       ) : (
-        <main className="relative w-screen min-h-dvh lg:h-dvh overflow-x-hidden lg:overflow-hidden bg-[#FDEBF1] select-none">
+        <main className="relative w-full min-h-dvh overflow-x-hidden bg-[#FDEBF1] select-none">
           <AnimatePresence mode="wait">
             {screen === 'lock' && (
               <motion.div
@@ -200,7 +205,7 @@ export default function App() {
                 exit={prefersReducedMotion ? undefined : { opacity: 0 }}
                 transition={{ duration: 0.25 }}
               >
-                <LetterGiftScreen onNext={() => handleCompleteGift(3)} />
+                <PhotoAlbumGiftScreen onNext={() => handleCompleteGift(3)} />
               </motion.div>
             )}
 
@@ -212,7 +217,7 @@ export default function App() {
                 exit={prefersReducedMotion ? undefined : { opacity: 0 }}
                 transition={{ duration: 0.25 }}
               >
-                <PhotoAlbumGiftScreen onNext={() => handleCompleteGift(4)} />
+                <LetterGiftScreen onNext={() => handleCompleteGift(4)} />
               </motion.div>
             )}
           </AnimatePresence>

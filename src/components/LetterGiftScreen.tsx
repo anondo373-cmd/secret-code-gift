@@ -41,7 +41,7 @@ export function LetterGiftScreen({ onNext }: LetterGiftScreenProps) {
   };
 
   return (
-    <div className="relative w-full min-h-dvh lg:h-dvh bg-watercolor-clouds overflow-y-auto lg:overflow-hidden flex flex-col justify-between px-4 py-6 sm:px-10 lg:px-14">
+    <div className="relative w-full min-h-dvh bg-watercolor-clouds flex flex-col justify-between px-4 py-6 sm:px-10 lg:px-14">
 
       {/* Right Edge: Vertical Branch of Pink Cherry Blossoms Swaying Lightly */}
       <motion.div

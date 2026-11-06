@@ -88,7 +88,7 @@ export function LockScreen({ onUnlockNext, onSecretAdmin }: LockScreenProps) {
   const isReadyToSubmit = digits.length === 4 && status !== 'unlocked';
 
   return (
-    <div className="relative w-full min-h-dvh lg:h-dvh bg-[#FDEBF1] overflow-y-auto lg:overflow-hidden flex items-center justify-center px-4 py-6 sm:px-8 lg:px-14">
+    <div className="relative w-full min-h-dvh bg-[#FDEBF1] flex items-center justify-center px-4 py-6 sm:px-8 lg:px-14">
 
       {/* Top-Right Pink Ribbon Bow (tap 5 times for secret Admin access) */}
       <div

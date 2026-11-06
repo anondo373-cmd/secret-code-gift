@@ -277,7 +277,7 @@ export function PlaylistGiftScreen({ onNext }: PlaylistGiftScreenProps) {
   const progressPercent = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
   return (
-    <div className="relative w-full min-h-dvh lg:h-dvh bg-watercolor-stripes overflow-y-auto lg:overflow-hidden flex flex-col justify-between px-4 py-6 sm:px-10 lg:px-14">
+    <div className="relative w-full min-h-dvh bg-watercolor-stripes flex flex-col justify-between px-4 py-6 sm:px-10 lg:px-14">
       {/* Audio source: either YouTube IFrame Player or HTML5 <audio> */}
       {youtubeId ? (
         <div

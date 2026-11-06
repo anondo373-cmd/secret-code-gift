@@ -18,7 +18,7 @@ export function TulipsGiftScreen({ onNext }: TulipsGiftScreenProps) {
   const rightNotes = config.tulipNotes.slice(3, 6);
 
   return (
-    <div className="relative w-full min-h-dvh lg:h-dvh bg-watercolor-clouds overflow-y-auto lg:overflow-hidden flex flex-col justify-between px-4 py-5 sm:px-8 lg:px-12">
+    <div className="relative w-full min-h-dvh bg-watercolor-clouds flex flex-col justify-between px-4 py-5 sm:px-8 lg:px-12">
       {/* Lace Trim in Top-Left Corner */}
       <div className="pointer-events-none absolute top-0 left-0 z-0 opacity-75">
         <LaceCornerIllustration className="w-20 h-20 sm:w-36 sm:h-36 lg:w-44 lg:h-44" />
